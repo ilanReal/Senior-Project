@@ -100,7 +100,7 @@
   
   .card-thumb iframe { position:absolute; inset:0; width:100%; height:100%; border:0; z-index:2; }
   
-  /* CRITICAL FIX: Forces the tall iframe to stay 16:9 and center itself without stretching */
+  /* Prevents iframe stretching on tall cards */
   .work-card.tall .card-thumb iframe {
     height: auto;
     aspect-ratio: 16 / 9;
@@ -304,21 +304,13 @@
       </div>
     </div>
 
-  <div class="work-card half reveal" style="transition-delay:.15s">
+    <div class="work-card half reveal" style="transition-delay:.15s">
       <div class="card-thumb c-teal">
-        <div class="render">
-          <svg viewBox="0 0 220 160" width="220" height="160" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="g-teal" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#00e5c9" stop-opacity=".6"/>
-                <stop offset="100%" stop-color="#041a18" stop-opacity=".1"/>
-              </linearGradient>
-            </defs>
-            <rect x="40" y="30" width="140" height="100" rx="12" fill="url(#g-teal)" stroke="#00e5c9" stroke-width="1.5" opacity="0.5" stroke-dasharray="6 4" />
-            <circle cx="110" cy="80" r="22" fill="rgba(0,229,201,0.2)" stroke="#00e5c9" stroke-width="1" opacity="0.8"/>
-            <path d="M104 70 L122 80 L104 90 Z" fill="#00e5c9" opacity="0.9" />
-          </svg>
-        </div>
+        <iframe
+          src="https://drive.google.com/file/d/1dYn8aCpH8HQbsZiy4xWNGuyfmFBTbeKp/preview"
+          allow="autoplay; fullscreen"
+          allowfullscreen>
+        </iframe>
       </div>
       <div class="card-body">
         <div class="card-meta">
@@ -327,6 +319,7 @@
         <div class="card-title">2D Animation Made 2D</div>
       </div>
     </div>
+
     <div class="work-card half reveal" style="transition-delay:.2s">
       <div class="card-thumb c-amber">
         <div class="render">
