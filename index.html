@@ -16,7 +16,7 @@
     --accent2:  #ff6b9d;
     --accent3:  #00e5c9;
     --text:     #ede9ff;
-    --muted:    #8b89a8; /* Lightened slightly for better readability */
+    --muted:    #8b89a8;
     --card-b:   rgba(124,111,255,0.15);
   }
 
@@ -30,7 +30,6 @@
     overflow-x: hidden;
   }
 
-  /* Anti-AI Design Trick: A subtle film grain overlay makes it feel tactile and real */
   body::after {
     content: "";
     position: fixed;
@@ -78,7 +77,6 @@
 
   section { position:relative; z-index:1; padding: 7rem 4rem; }
   
-  /* Upgraded Section Titles with subtle gradients */
   .s-title { font-family:'Unbounded',sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight:700; letter-spacing:-.03em; line-height:1.1; margin-bottom:1rem; background: linear-gradient(90deg, #fff, #b4a8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .s-desc { color:var(--muted); font-size:1rem; max-width:500px; font-weight:400; line-height:1.8; }
 
@@ -87,7 +85,6 @@
   
   .work-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; align-items: start; }
 
-  /* Upgraded work card shadows */
   .work-card { position: relative; overflow: hidden; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); background: var(--bg3); cursor: pointer; transition: all .4s cubic-bezier(.22,1,.36,1); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
   .work-card:hover { transform: translateY(-8px) scale(1.01); border-color: rgba(124,111,255,.4); box-shadow: 0 25px 60px rgba(0,0,0,.6), 0 0 50px rgba(124,111,255,.15); }
 
@@ -110,7 +107,6 @@
 
   #about { background: var(--bg2); display:grid; grid-template-columns: 1fr 1fr; gap:6rem; align-items:center; position: relative; }
   
-  /* Richer shadow behind the avatar */
   .about-visual { position:relative; display:flex; align-items:center; justify-content:center; }
   .about-avatar-ring { width:220px; height:220px; border-radius:50%; border: 2px dashed rgba(124,111,255,.2); display:flex; align-items:center; justify-content:center; position:relative; animation: spin 25s linear infinite; }
   .about-avatar-ring::before, .about-avatar-ring::after { content:''; position:absolute; border-radius:50%; border:1px solid rgba(124,111,255,.1); }
@@ -134,7 +130,6 @@
   #process { background:var(--bg); }
   .process-grid { margin-top:4rem; display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; }
   
-  /* NEW Human/Organic Process Cards */
   .process-card { 
     background: rgba(18, 18, 30, 0.4); 
     backdrop-filter: blur(10px);
@@ -147,7 +142,6 @@
     box-shadow: 0 15px 35px rgba(0,0,0,.2);
   }
   
-  /* Pushing even cards down slightly to break the rigid AI grid */
   .process-card:nth-child(even) { margin-top: 1.5rem; }
 
   .process-card:hover { 
@@ -157,7 +151,6 @@
     box-shadow: 0 25px 50px rgba(0,0,0,.4), 0 0 40px rgba(124,111,255,.1); 
   }
   
-  /* Big watermark numbers behind the text */
   .process-num { 
     position: absolute;
     top: -10px;
@@ -309,7 +302,7 @@
       </div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="card-tag">Abstract</span>
+          <span class="card-tag">3D Animation</span>
         </div>
         <div class="card-title">Final 3D Animation</div>
       </div>
@@ -325,7 +318,7 @@
       </div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="card-tag pink">Character</span>
+          <span class="card-tag pink">2D Through 3D</span>
         </div>
         <div class="card-title">3D Animation Design with 2D Product</div>
       </div>
