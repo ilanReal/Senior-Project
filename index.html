@@ -49,7 +49,6 @@
   .nav-links { display:flex; gap:2.5rem; list-style:none; }
   .nav-links a { color: var(--muted); text-decoration: none; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
   .nav-links a:hover { color: var(--text); }
-  .nav-tag { font-size: .72rem; letter-spacing: .04em; background: rgba(124,111,255,.12); border: 1px solid rgba(124,111,255,.25); color: var(--accent); padding: .35rem .9rem; border-radius: 100px; }
 
   .hero { position: relative; z-index:1; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 9rem 4rem 5rem; }
   .hero-name { font-family: 'Unbounded', sans-serif; font-size: clamp(3.2rem, 8vw, 7.5rem); font-weight: 900; line-height: .92; letter-spacing: -.035em; opacity: 0; animation: up .7s ease .2s forwards; }
@@ -79,17 +78,15 @@
   .work-card { position: relative; overflow: hidden; border-radius: 16px; border: 1px solid var(--card-b); background: var(--bg3); cursor: pointer; transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .3s; }
   .work-card:hover { transform: translateY(-6px); border-color: rgba(124,111,255,.4); box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 40px rgba(124,111,255,.12); }
 
-  /* Changed all layout sizes to easily span across */
   .work-card.wide  { grid-column: span 7; }
   .work-card.tall  { grid-column: span 5; }
   .work-card.full  { grid-column: span 12; }
   .work-card.half  { grid-column: span 6; }
-  .work-card.third { grid-column: span 4; } /* 3 of these will fit perfectly in a 12-column grid */
+  .work-card.third { grid-column: span 4; }
 
   .card-thumb { width: 100%; background: var(--bg2); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
   
   .thumb-16-9 { aspect-ratio: 16 / 9; }
-  .thumb-9-16 { aspect-ratio: 9 / 16; }
 
   .card-thumb iframe { position:absolute; inset:0; width:100%; height:100%; border:0; z-index:2; }
 
@@ -113,9 +110,6 @@
   @keyframes spin { to { transform:rotate(360deg); } }
   .about-avatar { width:140px; height:140px; border-radius:50%; background: linear-gradient(135deg, #2d1b7a, #7c6fff); display:flex; align-items:center; justify-content:center; font-family:'Unbounded',sans-serif; font-size:2.5rem; font-weight:900; color:#fff; animation: spin-reverse 20s linear infinite; box-shadow: 0 0 60px rgba(124,111,255,.4); }
   @keyframes spin-reverse { to { transform:rotate(-360deg); } }
-  .about-corner-tag { position:absolute; font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; padding:.3rem .8rem; border-radius:100px; }
-  .about-corner-tag.tl { top:1.25rem; left:1.25rem; background:rgba(0,229,201,.1); border:1px solid rgba(0,229,201,.2); color:var(--accent3); }
-  .about-corner-tag.br { bottom:1.25rem; right:1.25rem; background:rgba(255,107,157,.1); border:1px solid rgba(255,107,157,.2); color:var(--accent2); }
   .about-tools { margin-top:2.5rem; display:flex; flex-wrap:wrap; gap:.5rem; }
   .tool-pill { font-size:.75rem; padding:.35rem .85rem; border-radius:100px; background:var(--bg3); border:1px solid rgba(255,255,255,.1); color:var(--muted); transition: border-color .2s, color .2s; }
   .tool-pill:hover { border-color:rgba(124,111,255,.4); color:var(--text); }
@@ -161,7 +155,6 @@
     .nav-links { display:none; }
     .hero, section, footer { padding-left:1.5rem; padding-right:1.5rem; }
     .stats-strip { padding:1.5rem; gap:1.5rem; flex-wrap:wrap; }
-    /* Making sure they stack nicely on mobile */
     .work-card.wide, .work-card.tall, .work-card.half, .work-card.third { grid-column:span 12; }
     #about { grid-template-columns:1fr; gap:2.5rem; }
     .process-grid { grid-template-columns:1fr 1fr; }
@@ -191,7 +184,6 @@
     <li><a href="#about">About</a></li>
     <li><a href="#process">Process</a></li>
   </ul>
-  <span class="nav-tag">Senior Project</span>
 </nav>
 
 <div class="hero">
@@ -290,11 +282,9 @@
 <section id="about">
   <div class="reveal">
     <div class="about-visual">
-      <div class="about-corner-tag tl">3D Artist</div>
       <div class="about-avatar-ring">
         <div class="about-avatar">IL</div>
       </div>
-      <div class="about-corner-tag br">Senior Project</div>
     </div>
   </div>
   <div class="reveal" style="transition-delay:.1s">
@@ -327,23 +317,23 @@
   <div class="process-grid">
     <div class="process-card reveal" style="transition-delay:.05s">
       <div class="process-num">01</div>
-      <div class="process-title">Get an Idea</div>
-      <div class="process-desc">Sketching the core concept to plan the motion and mood.</div>
+      <div class="process-title">Brainstorming</div>
+      <div class="process-desc">I usually start by messing around with concepts and doing quick sketches to figure out the overall vibe.</div>
     </div>
     <div class="process-card reveal" style="transition-delay:.1s">
       <div class="process-num">02</div>
-      <div class="process-title">Sketch the Idea</div>
-      <div class="process-desc">Planning the visual direction, composition, and camera angles.</div>
+      <div class="process-title">Storyboarding</div>
+      <div class="process-desc">Once I have a solid idea, I map out the camera angles and figure out how the animation will actually flow.</div>
     </div>
     <div class="process-card reveal" style="transition-delay:.15s">
       <div class="process-num">03</div>
-      <div class="process-title">Make Models</div>
-      <div class="process-desc">Building forms in 3D space. Blockout first, then detail passes.</div>
+      <div class="process-title">Modeling & Sculpting</div>
+      <div class="process-desc">This is where the real work happens. I block out the basic shapes in Blender before diving into the fine details.</div>
     </div>
     <div class="process-card reveal" style="transition-delay:.2s">
       <div class="process-num">04</div>
-      <div class="process-title">Render and Edit</div>
-      <div class="process-desc">Lighting passes, material tweaks, and final compositing in DaVinci Resolve.</div>
+      <div class="process-title">Lighting & Polish</div>
+      <div class="process-desc">I set up the lighting to lock in the mood, render it out, and use DaVinci Resolve to tie everything together.</div>
     </div>
   </div>
 </section>
