@@ -184,7 +184,9 @@
     overflow: hidden; 
     transition: max-height 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); 
   }
- .bts-container.expanded .bts-wrapper { 
+  
+  /* IMPORTANT FIX: Set to 20000px so up to 50 images can fit on mobile devices */
+  .bts-container.expanded .bts-wrapper { 
     max-height: 20000px; 
   }
   
@@ -208,7 +210,6 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   }
   
-  /* The fading gradient that hides the bottom */
   .bts-overlay { 
     position: absolute; 
     bottom: 0; left: 0; right: 0; 
@@ -225,7 +226,6 @@
     pointer-events: none; 
   }
   
-  /* The See Less Button */
   .bts-collapse-btn { 
     display: none; 
     justify-content: center; 
@@ -451,21 +451,31 @@
   <div class="bts-container reveal" id="bts-container" style="transition-delay: .1s">
     <div class="bts-wrapper" id="bts-wrapper">
       <div class="bts-grid">
-        <img src="1.png" alt="BTS Code Snippet">
-        <img src="2.png" alt="BTS Blender Couch">
-        <img src="3.png" alt="BTS Blender Rigging">
-        <img src="4.png" alt="BTS DaVinci Resolve Nodes 1">
-        <img src="5.png" alt="BTS DaVinci Resolve Nodes 2">
-        <img src="6.png" alt="BTS DaVinci Resolve Timeline">
-        <img src="7.png" alt="BTS DaVinci Resolve Nodes 3">
-        <img src="8.png" alt="BTS Blender Boat 1">
-        <img src="9.png" alt="BTS Blender Boat 2">
-        <img src="10.png" alt="BTS Blender Room">
-        
-        <img src="11.png" alt="BTS DaVinci Resolve Buildings">
-        <img src="12.png" alt="BTS Blender Character Rig">
-        <img src="13.png" alt="BTS Blender Couch Lighting">
-        <img src="14.png" alt="BTS JavaScript Code">
+        <img src="1.png" alt="BTS Image 1">
+        <img src="2.png" alt="BTS Image 2">
+        <img src="3.png" alt="BTS Image 3">
+        <img src="4.png" alt="BTS Image 4">
+        <img src="5.png" alt="BTS Image 5">
+        <img src="6.png" alt="BTS Image 6">
+        <img src="7.png" alt="BTS Image 7">
+        <img src="8.png" alt="BTS Image 8">
+        <img src="9.png" alt="BTS Image 9">
+        <img src="10.png" alt="BTS Image 10">
+        <img src="11.png" alt="BTS Image 11">
+        <img src="12.png" alt="BTS Image 12">
+        <img src="13.png" alt="BTS Image 13">
+        <img src="14.png" alt="BTS Image 14">
+        <img src="15.png" alt="BTS Image 15">
+        <img src="16.png" alt="BTS Image 16">
+        <img src="17.png" alt="BTS Image 17">
+        <img src="18.png" alt="BTS Image 18">
+        <img src="19.png" alt="BTS Image 19">
+        <img src="20.png" alt="BTS Image 20">
+        <img src="21.png" alt="BTS Image 21">
+        <img src="22.png" alt="BTS Image 22">
+        <img src="23.png" alt="BTS Image 23">
+        <img src="24.png" alt="BTS Image 24">
+        <img src="25.png" alt="BTS Image 25">
       </div>
     </div>
     
