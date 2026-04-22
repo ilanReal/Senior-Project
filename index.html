@@ -1,377 +1,625 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>Ilan — 3D Animation Portfolio</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+
+
   :root {
-    --bg:        #07070f;
-    --bg2:       #0d0d18;
-    --bg3:       #12121e;
-    --accent:    #7c6fff;
-    --accent2:   #ff6b9d;
-    --accent3:   #00e5c9;
-    --text:      #ede9ff;
-    --muted:     #6b6987;
-    --card-b:    rgba(124,111,255,0.13);
+
+    --bg:       #07070f;
+
+    --bg2:      #0d0d18;
+
+    --bg3:      #12121e;
+
+    --accent:   #7c6fff;
+
+    --accent2:  #ff6b9d;
+
+    --accent3:  #00e5c9;
+
+    --text:     #ede9ff;
+
+    --muted:    #6b6987;
+
+    --card-b:   rgba(124,111,255,0.13);
+
   }
+
+
 
   html { scroll-behavior: smooth; }
 
+
+
   body {
+
     background: var(--bg);
+
     color: var(--text);
+
     font-family: 'DM Sans', sans-serif;
+
     line-height: 1.65;
+
     overflow-x: hidden;
+
   }
 
-  /* ─── AMBIENT BACKGROUND ─── */
-  .bg-orbs {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    overflow: hidden;
-  }
-  .bg-orbs span {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-  }
+
+
+  .bg-orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+
+  .bg-orbs span { position: absolute; border-radius: 50%; filter: blur(100px); }
+
   .bg-orbs .o1 { width:700px; height:700px; background:rgba(124,111,255,.10); top:-200px; right:-150px; }
+
   .bg-orbs .o2 { width:500px; height:500px; background:rgba(255,107,157,.07); bottom:5%; left:-100px; }
+
   .bg-orbs .o3 { width:350px; height:350px; background:rgba(0,229,201,.06); top:55%; right:8%; }
 
-  /* ─── NAV ─── */
+
+
   nav {
+
     position: fixed; top:0; left:0; right:0; z-index:200;
+
     display: flex; align-items: center; justify-content: space-between;
+
     padding: 1.25rem 4rem;
+
     background: rgba(7,7,15,.75);
+
     backdrop-filter: blur(18px);
+
     border-bottom: 1px solid rgba(124,111,255,.08);
-  }
-  .nav-logo {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 1rem; font-weight: 700;
-    letter-spacing: -.02em;
-    color: var(--text); text-decoration: none;
-  }
-  .nav-logo em { color: var(--accent); font-style: normal; }
-  .nav-links { display:flex; gap:2.5rem; list-style:none; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none;
-    font-size: .8rem; letter-spacing: .08em; text-transform: uppercase;
-    transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-tag {
-    font-size: .72rem; letter-spacing: .04em;
-    background: rgba(124,111,255,.12);
-    border: 1px solid rgba(124,111,255,.25);
-    color: var(--accent);
-    padding: .35rem .9rem; border-radius: 100px;
+
   }
 
-  /* ─── HERO ─── */
-  .hero {
-    position: relative; z-index:1;
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 9rem 4rem 5rem;
-  }
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: .6rem;
-    font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--accent); font-weight: 500; margin-bottom: 1.75rem;
-    opacity: 0; animation: up .7s ease .1s forwards;
-  }
-  .hero-eyebrow::before {
-    content:''; display:block; width:28px; height:1px; background:var(--accent);
-  }
-  .hero-name {
-    font-family: 'Unbounded', sans-serif;
-    font-size: clamp(3.2rem, 8vw, 7.5rem);
-    font-weight: 900; line-height: .92; letter-spacing: -.035em;
-    opacity: 0; animation: up .7s ease .2s forwards;
-  }
-  .hero-name .outline {
-    display: block;
-    color: transparent;
-    -webkit-text-stroke: 1.5px rgba(237,233,255,.2);
-    margin-left: 5vw;
-    margin-top: .1em;
-  }
-  .hero-sub {
-    margin-top: 2.25rem;
-    max-width: 480px;
-    font-size: 1.05rem; font-weight: 300;
-    color: var(--muted); line-height: 1.8;
-    opacity: 0; animation: up .7s ease .35s forwards;
-  }
+  .nav-logo { font-family: 'Unbounded', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: -.02em; color: var(--text); text-decoration: none; }
+
+  .nav-logo em { color: var(--accent); font-style: normal; }
+
+  .nav-links { display:flex; gap:2.5rem; list-style:none; }
+
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-tag { font-size: .72rem; letter-spacing: .04em; background: rgba(124,111,255,.12); border: 1px solid rgba(124,111,255,.25); color: var(--accent); padding: .35rem .9rem; border-radius: 100px; }
+
+
+
+  .hero { position: relative; z-index:1; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 9rem 4rem 5rem; }
+
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: .6rem; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 1.75rem; opacity: 0; animation: up .7s ease .1s forwards; }
+
+  .hero-eyebrow::before { content:''; display:block; width:28px; height:1px; background:var(--accent); }
+
+  .hero-name { font-family: 'Unbounded', sans-serif; font-size: clamp(3.2rem, 8vw, 7.5rem); font-weight: 900; line-height: .92; letter-spacing: -.035em; opacity: 0; animation: up .7s ease .2s forwards; }
+
+  .hero-name .outline { display: block; color: transparent; -webkit-text-stroke: 1.5px rgba(237,233,255,.2); margin-left: 5vw; margin-top: .1em; }
+
+  .hero-sub { margin-top: 2.25rem; max-width: 480px; font-size: 1.05rem; font-weight: 300; color: var(--muted); line-height: 1.8; opacity: 0; animation: up .7s ease .35s forwards; }
+
   .hero-sub strong { color: var(--text); font-weight: 400; }
-  .hero-cta {
-    margin-top: 2.75rem; display:flex; gap:1rem; align-items:center;
-    opacity: 0; animation: up .7s ease .5s forwards;
-  }
-  .btn-primary {
-    background: var(--accent); color: #fff;
-    text-decoration: none; padding: .8rem 2rem;
-    border-radius: 100px; font-size: .9rem; font-weight:500;
-    transition: transform .2s, box-shadow .2s;
-    box-shadow: 0 0 28px rgba(124,111,255,.4);
-  }
+
+  .hero-cta { margin-top: 2.75rem; display:flex; gap:1rem; align-items:center; opacity: 0; animation: up .7s ease .5s forwards; }
+
+  .btn-primary { background: var(--accent); color: #fff; text-decoration: none; padding: .8rem 2rem; border-radius: 100px; font-size: .9rem; font-weight:500; transition: transform .2s, box-shadow .2s; box-shadow: 0 0 28px rgba(124,111,255,.4); }
+
   .btn-primary:hover { transform:translateY(-2px); box-shadow:0 0 48px rgba(124,111,255,.6); }
-  .btn-ghost {
-    color: var(--muted); text-decoration:none; padding: .8rem 2rem;
-    border-radius: 100px; font-size: .9rem;
-    border: 1px solid rgba(255,255,255,.1);
-    transition: border-color .2s, color .2s;
-  }
+
+  .btn-ghost { color: var(--muted); text-decoration:none; padding: .8rem 2rem; border-radius: 100px; font-size: .9rem; border: 1px solid rgba(255,255,255,.1); transition: border-color .2s, color .2s; }
+
   .btn-ghost:hover { border-color: rgba(255,255,255,.25); color: var(--text); }
 
-  .hero-scroll {
-    position: absolute; bottom: 3rem; left: 4rem;
-    display:flex; align-items:center; gap:.75rem;
-    color: var(--muted); font-size: .72rem; letter-spacing: .1em; text-transform:uppercase;
-    opacity: 0; animation: up .7s ease .7s forwards;
-  }
-  .scroll-bar {
-    width: 36px; height: 1px; background:var(--muted);
-    animation: pulse 2s ease-in-out infinite;
-  }
+  .hero-scroll { position: absolute; bottom: 3rem; left: 4rem; display:flex; align-items:center; gap:.75rem; color: var(--muted); font-size: .72rem; letter-spacing: .1em; text-transform:uppercase; opacity: 0; animation: up .7s ease .7s forwards; }
+
+  .scroll-bar { width: 36px; height: 1px; background:var(--muted); animation: pulse 2s ease-in-out infinite; }
+
   @keyframes pulse { 0%,100%{opacity:.4;transform:scaleX(1)} 50%{opacity:1;transform:scaleX(1.4)} }
 
-  /* ─── SHARED SECTION ─── */
+
+
+  .stats-strip { position: relative; z-index:1; background: var(--bg2); border-top: 1px solid rgba(255,255,255,.04); border-bottom: 1px solid rgba(255,255,255,.04); padding: 2rem 4rem; display:flex; align-items:center; gap:3rem; }
+
+  .stat { display:flex; flex-direction:column; gap:.2rem; }
+
+  .stat-n { font-family:'Unbounded',sans-serif; font-size:1.65rem; font-weight:700; letter-spacing:-.03em; }
+
+  .stat-n em { color:var(--accent); font-style:normal; }
+
+  .stat-l { font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); }
+
+  .stat-sep { width:1px; height:42px; background:rgba(255,255,255,.07); }
+
+
+
   section { position:relative; z-index:1; padding: 6rem 4rem; }
 
-  .s-label {
-    display:flex; align-items:center; gap:.5rem;
-    font-size:.7rem; letter-spacing:.15em; text-transform:uppercase;
-    color:var(--accent); font-weight:500; margin-bottom:.75rem;
-  }
+  .s-label { display:flex; align-items:center; gap:.5rem; font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); font-weight:500; margin-bottom:.75rem; }
+
   .s-label::before { content:''; display:block; width:16px; height:1px; background:var(--accent); }
 
-  .s-title {
-    font-family:'Unbounded',sans-serif;
-    font-size: clamp(1.6rem, 3vw, 2.5rem);
-    font-weight:700; letter-spacing:-.03em; line-height:1.1;
-    margin-bottom:1rem;
-  }
+  .s-title { font-family:'Unbounded',sans-serif; font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight:700; letter-spacing:-.03em; line-height:1.1; margin-bottom:1rem; }
 
-  /* ─── WORK ROW ─── */
+  .s-desc { color:var(--muted); font-size:.95rem; max-width:480px; font-weight:300; line-height:1.8; }
+
+
+
   #work { background:var(--bg); }
 
-  .work-header { margin-bottom: 3rem; }
+  .work-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:3rem; }
 
-  .work-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
+  .work-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.25rem; }
 
-  .work-card {
-    position: relative; overflow: hidden;
-    border-radius: 20px;
-    border: 1px solid var(--card-b);
-    background: var(--bg3);
-    transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .3s;
-  }
-  .work-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(124,111,255,.4);
-  }
-
-  .card-thumb {
-    width: 100%; aspect-ratio: 16/9;
-    background: #000;
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .card-thumb iframe {
-    position:absolute; inset:0; width:100%; height:100%; border:0;
-  }
-
-  .card-body { padding: 1.5rem; text-align: center; }
   
-  .card-title {
-    font-family:'Unbounded',sans-serif;
-    font-size: 1rem; font-weight:700; letter-spacing:-.02em;
-    color: var(--text);
+
+  /* Added align-items: start to stop shorter cards from stretching vertically */
+
+  .work-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.25rem; align-items: start; }
+
+
+
+  .work-card { position: relative; overflow: hidden; border-radius: 16px; border: 1px solid var(--card-b); background: var(--bg3); cursor: pointer; transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .3s; }
+
+  .work-card:hover { transform: translateY(-6px); border-color: rgba(124,111,255,.4); box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 40px rgba(124,111,255,.12); }
+
+@@ -93,22 +95,16 @@
+
+  .work-card.half  { grid-column: span 6; }
+
+  .work-card.third { grid-column: span 4; }
+
+
+
+  .card-thumb { width: 100%; aspect-ratio: 16/9; background: var(--bg2); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+
+  .work-card.tall .card-thumb { aspect-ratio: 4/5; }
+
+  .card-thumb { width: 100%; background: var(--bg2); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+
+  
+
+  /* New Aspect Ratio Classes */
+
+  .thumb-16-9 { aspect-ratio: 16 / 9; }
+
+  .thumb-9-16 { aspect-ratio: 9 / 16; }
+
+
+
+  .card-thumb .render { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4rem; transition: transform .5s cubic-bezier(.22,1,.36,1); }
+
+  .work-card:hover .render { transform: scale(1.07); }
+
+
+
+  .card-thumb iframe { position:absolute; inset:0; width:100%; height:100%; border:0; z-index:2; }
+
+  
+
+  /* Prevents iframe stretching on tall cards */
+
+  .work-card.tall .card-thumb iframe {
+
+    height: auto;
+
+    aspect-ratio: 16 / 9;
+
+    top: 50%;
+
+    bottom: auto;
+
+    transform: translateY(-50%);
+
   }
 
-  /* ─── ABOUT ─── */
-  #about {
-    background: var(--bg2);
-    display:grid; grid-template-columns: 1fr 1fr; gap:5rem; align-items:center;
-  }
 
-  .about-visual {
-    position:relative; height:420px;
-    border-radius:24px; overflow:hidden;
-    border: 1px solid var(--card-b);
-    background: var(--bg3);
-    display:flex; align-items:center; justify-content:center;
-  }
 
-  .about-avatar {
-    width:140px; height:140px; border-radius:50%;
-    background: linear-gradient(135deg, #2d1b7a, #7c6fff);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Unbounded',sans-serif;
-    font-size:2.5rem; font-weight:900; color:#fff;
-    box-shadow: 0 0 60px rgba(124,111,255,.4);
-  }
+  .card-thumb img { width:100%; height:100%; object-fit:cover; }
 
-  .about-desc { color:var(--muted); font-size:.95rem; max-width:480px; font-weight:300; line-height:1.8; }
 
-  /* ─── FOOTER ─── */
-  footer {
-    position:relative; z-index:1;
-    background:var(--bg2);
-    border-top:1px solid rgba(255,255,255,.04);
-    padding:3rem 4rem;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .footer-name {
-    font-family:'Unbounded',sans-serif; font-size:1rem; font-weight:700;
-  }
-  .footer-link {
-    font-size:.8rem; color:var(--muted); text-decoration:none; text-transform:uppercase;
-  }
 
-  @keyframes up {
-    from { opacity:0; transform:translateY(22px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
+  .c-violet { background: linear-gradient(135deg, #1a1040 0%, #2d1b7a 50%, #1a0f35 100%); }
 
-  .reveal {
-    opacity:0; transform:translateY(28px);
-    transition: opacity .7s ease, transform .7s ease;
-  }
-  .reveal.visible { opacity:1; transform:translateY(0); }
-
-  @media (max-width: 900px) {
-    nav { padding:1rem 1.5rem; }
-    .nav-links { display:none; }
-    .hero, section, footer { padding-left:1.5rem; padding-right:1.5rem; }
-    .work-grid { grid-template-columns: 1fr; }
-    #about { grid-template-columns:1fr; gap:2.5rem; }
-  }
-</style>
-</head>
-<body>
-
-<div class="bg-orbs">
-  <span class="o1"></span>
-  <span class="o2"></span>
-  <span class="o3"></span>
-</div>
-
-<nav>
-  <a class="nav-logo" href="#"><em>i</em>lan.</a>
-  <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#about">About</a></li>
-  </ul>
-  <span class="nav-tag">Senior Project</span>
-</nav>
-
-<div class="hero">
-  <div class="hero-eyebrow">3D Motion Portfolio</div>
-  <h1 class="hero-name">
-    ILAN
-    <span class="outline">RENDERS</span>
-  </h1>
-  <p class="hero-sub">
-    A collection of <strong>original 3D animations</strong> crafted for my senior project — exploring form, light, and motion in digital space.
-  </p>
-  <div class="hero-cta">
-    <a href="#work" class="btn-primary">View My Work</a>
-    <a href="#about" class="btn-ghost">About Me</a>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-bar"></div>
-    Scroll to explore
-  </div>
-</div>
-
-<section id="work">
-  <div class="work-header reveal">
-    <div class="s-label">Portfolio</div>
-    <h2 class="s-title">Selected Works</h2>
-  </div>
+@@ -277,7 +273,7 @@
 
   <div class="work-grid">
-    <div class="work-card reveal">
-      <div class="card-thumb">
-        <iframe
-          src="https://www.youtube.com/embed/m0Na6DiH8yU"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+
+
+
+    <div class="work-card wide reveal">
+
+      <div class="card-thumb c-violet" onclick="window.open('https://www.youtube.com/watch?v=m0Na6DiH8yU','_blank')">
+
+      <div class="card-thumb thumb-16-9 c-violet" onclick="window.open('https://www.youtube.com/watch?v=m0Na6DiH8yU','_blank')">
+
+        <img src="https://img.youtube.com/vi/m0Na6DiH8yU/maxresdefault.jpg" alt="Final 3D Animation">
+
       </div>
+
       <div class="card-body">
-        <div class="card-title">Final 3D Animation</div>
-      </div>
+
+@@ -289,7 +285,7 @@
+
     </div>
 
-    <div class="work-card reveal" style="transition-delay:.1s">
-      <div class="card-thumb">
-        <iframe 
-          src="https://drive.google.com/file/d/1mGJPMxaYUKsuqGUdaaFD0ry-DSDfJGZH/preview" 
-          allow="autoplay; fullscreen" 
-          allowfullscreen>
-        </iframe>
-      </div>
-      <div class="card-body">
-        <div class="card-title">3D Environment Study</div>
-      </div>
+
+
+    <div class="work-card tall reveal" style="transition-delay:.1s;" onclick="document.getElementById('modal').classList.add('open')">
+
+      <div class="card-thumb c-rose">
+
+      <div class="card-thumb thumb-9-16 c-rose">
+
+        <iframe
+
+          src="https://drive.google.com/file/d/1mGJPMxaYUKsuqGUdaaFD0ry-DSDfJGZH/preview"
+
+          allow="autoplay; fullscreen"
+
+@@ -305,7 +301,7 @@
+
     </div>
+
+
+
+    <div class="work-card half reveal" style="transition-delay:.15s">
+
+      <div class="card-thumb c-teal">
+
+      <div class="card-thumb thumb-9-16 c-teal">
+
+        <iframe
+
+          src="https://drive.google.com/file/d/1dYn8aCpH8HQbsZiy4xWNGuyfmFBTbeKp/preview"
+
+          allow="autoplay; fullscreen"
+
+@@ -321,7 +317,7 @@
+
+    </div>
+
+
+
+    <div class="work-card half reveal" style="transition-delay:.2s">
+
+      <div class="card-thumb c-amber">
+
+      <div class="card-thumb thumb-16-9 c-amber">
+
+        <div class="render">
+
+          <svg viewBox="0 0 280 190" width="280" height="190" xmlns="http://www.w3.org/2000/svg">
+
+            <defs>
+
+@@ -347,7 +343,7 @@
+
+    </div>
+
+
+
+    <div class="work-card third reveal" style="transition-delay:.1s">
+
+      <div class="card-thumb c-blue">
+
+      <div class="card-thumb thumb-16-9 c-blue">
+
+        <div class="render">
+
+          <svg viewBox="0 0 220 160" width="220" height="160" xmlns="http://www.w3.org/2000/svg">
+
+            <defs>
+
+@@ -370,7 +366,7 @@
+
+    </div>
+
+
+
+    <div class="work-card third reveal" style="transition-delay:.15s">
+
+      <div class="card-thumb c-green">
+
+      <div class="card-thumb thumb-16-9 c-green">
+
+        <div class="render">
+
+          <svg viewBox="0 0 220 160" width="220" height="160" xmlns="http://www.w3.org/2000/svg">
+
+            <defs>
+
+@@ -393,137 +389,137 @@
+
+    </div>
+
+
+
+    <div class="work-card third reveal" style="transition-delay:.2s">
+
+      <div class="card-thumb c-rose">
+
+      <div class="card-thumb thumb-16-9 c-rose">
+
+        <div class="render">
+
+          <svg viewBox="0 0 220 160" width="220" height="160" xmlns="http://www.w3.org/2000/svg">
+
+            <defs>
+
+              <radialGradient id="g7" cx="50%" cy="50%" r="50%">
+
+                <stop offset="0%" stop-color="#fda4af" stop-opacity=".9"/>
+
+                <stop offset="100%" stop-color="#9f1239" stop-opacity=".1"/>
+
+              </radialGradient>
+
+            </defs>
+
+            <circle cx="110" cy="80" r="50" fill="url(#g7)" opacity=".4"/>
+
+            <circle cx="110" cy="80" r="50" fill="none" stroke="#fda4af" stroke-width="1.5" opacity=".4" stroke-dasharray="8 4"/>
+
+            <circle cx="110" cy="80" r="25" fill="#ff6b9d" opacity=".7"/>
+
+            <circle cx="110" cy="80" r="10" fill="#fce7f3"/>
+
+          </svg>
+
+        </div>
+
+      </div>
+
+      <div class="card-body">
+
+        <div class="card-meta"><span class="card-tag pink">Concept</span></div>
+
+        <div class="card-title">Pulse</div>
+
+        <div class="card-desc">Heartbeat-driven particle emission — audio-reactive prototype render.</div>
+
+      </div>
+
+    </div>
+
+
+
   </div>
+
 </section>
+
+
 
 <section id="about">
+
   <div class="reveal">
+
     <div class="about-visual">
-      <div class="about-avatar">IL</div>
+
+      <div class="about-corner-tag tl">3D Artist</div>
+
+      <div class="about-avatar-ring">
+
+        <div class="about-avatar">IL</div>
+
+      </div>
+
+      <div class="about-corner-tag br">Senior Project</div>
+
     </div>
+
   </div>
+
   <div class="reveal" style="transition-delay:.1s">
+
     <div class="s-label">About</div>
+
     <h2 class="s-title">Hey, I'm Ilan.</h2>
-    <p class="about-desc">
-      I'm a student passionate about 3D animation and digital art. This portfolio is the result of a year spent learning, experimenting, and pushing what I can build from scratch — from concept to final render.
+
+    <p class="s-desc">
+
+      I'm a student passionate about 3D animation and digital art. This portfolio is the result of a year spent learning, experimenting, and pushing what I can build from scratch.
+
+      <br><br>
+
+      Every piece here was made as part of my senior capstone project, focusing on the relationship between <strong style="color:var(--text);font-weight:400">form, light, and motion</strong>.
+
     </p>
+
+    <div class="about-tools">
+
+      <span class="tool-pill">Blender</span>
+
+      <span class="tool-pill">DaVinci Resolve</span>
+
+      <span class="tool-pill">Google FX</span>
+
+    </div>
+
+    <div class="about-facts">
+
+      <div class="fact-card">
+
+        <div class="fact-n">5+</div>
+
+        <div class="fact-l">Completed animations</div>
+
+      </div>
+
+      <div class="fact-card">
+
+        <div class="fact-n" style="color:var(--accent2)">1 yr</div>
+
+        <div class="fact-l">Time in production</div>
+
+      </div>
+
+      <div class="fact-card">
+
+        <div class="fact-n" style="color:var(--accent3)">5+</div>
+
+        <div class="fact-l">Techniques explored</div>
+
+      </div>
+
+    </div>
+
   </div>
+
 </section>
 
-<footer>
-  <div class="footer-left">
-    <div class="footer-name">Ilan — 3D Animation</div>
-    <div class="footer-sub">Senior Capstone Project</div>
+
+
+<section id="process">
+
+  <div class="reveal" style="max-width:600px">
+
+    <div class="s-label">How I Work</div>
+
+    <h2 class="s-title">The Creative Process</h2>
+
+    <p class="s-desc">Every animation follows the same four-stage pipeline — from rough idea to polished output.</p>
+
   </div>
-  <div class="footer-right">
-    <a href="#work" class="footer-link">Work</a>
-    <a href="#about" class="footer-link">About</a>
+
+  <div class="process-grid">
+
+    <div class="process-card reveal" style="transition-delay:.05s">
+
+      <div class="process-num">01</div>
+
+      <div class="process-icon">💡</div>
+
+      <div class="process-title">Concept</div>
+
+      <div class="process-desc">Sketching the core idea — what's the motion, what's the mood, what story does the geometry tell?</div>
+
     </div>
+
+    <div class="process-card reveal" style="transition-delay:.1s">
+
+      <div class="process-num">02</div>
+
+      <div class="process-icon">🧱</div>
+
+      <div class="process-title">Modeling</div>
+
+      <div class="process-desc">Building forms in 3D space. Blockout first, then detail passes and topology refinement.</div>
+
+    </div>
+
+    <div class="process-card reveal" style="transition-delay:.15s">
+
+      <div class="process-num">03</div>
+
+      <div class="process-icon">🎞</div>
+
+      <div class="process-title">Animation</div>
+
+      <div class="process-desc">Keyframes, curves, and drivers. Rigging where needed. Getting the timing to feel alive.</div>
+
+    </div>
+
+    <div class="process-card reveal" style="transition-delay:.2s">
+
+      <div class="process-num">04</div>
+
+      <div class="process-icon">✨</div>
+
+      <div class="process-title">Render &amp; Comp</div>
+
+      <div class="process-desc">Lighting passes, material tweaks, and final compositing in DaVinci Resolve for color and grain.</div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<footer>
+
+  <div class="footer-left">
+
+    <div class="footer-name">Ilan — 3D Animation Portfolio</div>
+
+    <div class="footer-sub">Senior Capstone Project</div>
+
+  </div>
+
+  <div class="footer-right">
+
+    <a href="#work" class="footer-link">Work</a>
+
+    <a href="#about" class="footer-link">About</a>
+
+    <a href="#process" class="footer-link">Process</a>
+
+  </div>
+
 </footer>
 
+
+
 <script>
+
   const reveals = document.querySelectorAll('.reveal');
+
   const observer = new IntersectionObserver((entries) => {
+
     entries.forEach(e => {
+
       if (e.isIntersecting) {
+
         e.target.classList.add('visible');
+
         observer.unobserve(e.target);
+
       }
+
     });
+
   }, { threshold: 0.1 });
+
   reveals.forEach(r => observer.observe(r));
+
+
+
+  const sections = document.querySelectorAll('section[id], div[id]');
+
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+
+    let current = '';
+
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
+
+    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : ''; });
+
+  });
+
 </script>
+
 </body>
+
 </html>
