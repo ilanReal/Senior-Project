@@ -63,9 +63,9 @@
   .hero-name { font-family: 'Unbounded', sans-serif; font-size: clamp(3.2rem, 8vw, 7.5rem); font-weight: 900; line-height: .92; letter-spacing: -.035em; opacity: 0; animation: up .7s ease .2s forwards; }
   .hero-name .outline { display: block; color: transparent; -webkit-text-stroke: 1.5px rgba(237,233,255,.2); margin-left: 5vw; margin-top: .1em; text-shadow: 0 10px 30px rgba(124,111,255,0.1); }
   .hero-cta { margin-top: 2.75rem; display:flex; gap:1.25rem; align-items:center; opacity: 0; animation: up .7s ease .5s forwards; }
-  .btn-primary { background: linear-gradient(135deg, var(--accent), #5648d4); color: #fff; text-decoration: none; padding: .9rem 2.2rem; border-radius: 100px; font-size: .95rem; font-weight:500; transition: all .3s cubic-bezier(.22,1,.36,1); box-shadow: 0 8px 28px rgba(124,111,255,.3); }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), #5648d4); color: #fff; text-decoration: none; padding: .9rem 2.2rem; border-radius: 100px; font-size: .95rem; font-weight:500; transition: all .3s cubic-bezier(.22,1,.36,1); box-shadow: 0 8px 28px rgba(124,111,255,.3); border: none; cursor: pointer; }
   .btn-primary:hover { transform:translateY(-3px); box-shadow:0 15px 35px rgba(124,111,255,.5); }
-  .btn-ghost { color: var(--muted); text-decoration:none; padding: .9rem 2.2rem; border-radius: 100px; font-size: .95rem; border: 1px solid rgba(255,255,255,.1); transition: all .3s; background: rgba(255,255,255,0.02); }
+  .btn-ghost { color: var(--muted); text-decoration:none; padding: .9rem 2.2rem; border-radius: 100px; font-size: .95rem; border: 1px solid rgba(255,255,255,.1); transition: all .3s; background: rgba(255,255,255,0.02); cursor: pointer; }
   .btn-ghost:hover { border-color: rgba(255,255,255,.25); color: var(--text); background: rgba(255,255,255,0.05); transform:translateY(-3px); }
   
   .stats-strip { position: relative; z-index:1; background: rgba(13,13,24,0.7); backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,.04); border-bottom: 1px solid rgba(255,255,255,.04); padding: 2.5rem 4rem; display:flex; align-items:center; gap:3.5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
@@ -167,63 +167,76 @@
   #process { background:var(--bg); }
   .process-grid { margin-top:4rem; display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; }
   
-  .process-card { 
-    background: rgba(18, 18, 30, 0.4); 
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,.04); 
-    border-radius: 24px; 
-    padding: 2.5rem 1.75rem; 
-    position: relative; 
-    overflow: hidden; 
-    transition: all .4s cubic-bezier(.175, .885, .32, 1.275); 
-    box-shadow: 0 15px 35px rgba(0,0,0,.2);
-  }
-  
+  .process-card { background: rgba(18, 18, 30, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.04); border-radius: 24px; padding: 2.5rem 1.75rem; position: relative; overflow: hidden; transition: all .4s cubic-bezier(.175, .885, .32, 1.275); box-shadow: 0 15px 35px rgba(0,0,0,.2); }
   .process-card:nth-child(even) { margin-top: 1.5rem; }
+  .process-card:hover { border-color: rgba(124,111,255,.3); transform: translateY(-8px) scale(1.02); background: rgba(25, 25, 45, 0.5); box-shadow: 0 25px 50px rgba(0,0,0,.4), 0 0 40px rgba(124,111,255,.1); }
+  .process-num { position: absolute; top: -10px; right: -5px; font-family:'Unbounded',sans-serif; font-size: 6.5rem; font-weight:900; color: rgba(255,255,255,0.02); line-height: 1; transition: color 0.4s; z-index: 0; }
+  .process-card:hover .process-num { color: rgba(124,111,255,0.06); }
+  .process-title { position: relative; z-index: 1; font-family:'Unbounded',sans-serif; font-size: 1.1rem; font-weight:700; letter-spacing:-.02em; margin-bottom:.75rem; color: #fff; }
+  .process-desc { position: relative; z-index: 1; font-size:.9rem; color:var(--muted); font-weight:400; line-height:1.75; }
 
-  .process-card:hover { 
-    border-color: rgba(124,111,255,.3); 
-    transform: translateY(-8px) scale(1.02); 
-    background: rgba(25, 25, 45, 0.5);
-    box-shadow: 0 25px 50px rgba(0,0,0,.4), 0 0 40px rgba(124,111,255,.1); 
+  /* Behind the Scenes Section */
+  #bts { background: var(--bg2); }
+  .bts-container { position: relative; margin-top: 1.5rem; }
+  
+  .bts-wrapper { 
+    max-height: 380px; 
+    overflow: hidden; 
+    transition: max-height 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); 
+  }
+  .bts-wrapper.expanded { 
+    max-height: 3000px; 
   }
   
-  .process-num { 
-    position: absolute;
-    top: -10px;
-    right: -5px;
-    font-family:'Unbounded',sans-serif; 
-    font-size: 6.5rem; 
-    font-weight:900; 
-    color: rgba(255,255,255,0.02); 
-    line-height: 1;
-    transition: color 0.4s;
-    z-index: 0;
+  .bts-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 1.25rem; 
+    padding-bottom: 2rem;
   }
-  .process-card:hover .process-num {
-    color: rgba(124,111,255,0.06);
+  .bts-grid img { 
+    width: 100%; 
+    height: 220px; 
+    object-fit: cover; 
+    border-radius: 16px; 
+    border: 1px solid rgba(255,255,255,0.05); 
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s; 
+  }
+  .bts-grid img:hover { 
+    transform: scale(1.03); 
+    border-color: rgba(124,111,255,.4); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  
+  /* The fading gradient that hides the bottom */
+  .bts-overlay { 
+    position: absolute; 
+    bottom: 0; left: 0; right: 0; 
+    height: 250px; 
+    background: linear-gradient(to bottom, rgba(13,13,24,0) 0%, rgba(13,13,24,1) 90%); 
+    display: flex; 
+    align-items: flex-end; 
+    justify-content: center; 
+    padding-bottom: 1rem; 
+    transition: opacity 0.5s; 
+  }
+  .bts-container.expanded .bts-overlay { 
+    opacity: 0; 
+    pointer-events: none; 
+  }
+  
+  /* The See Less Button */
+  .bts-collapse-btn { 
+    display: none; 
+    justify-content: center; 
+    margin-top: 1rem; 
+  }
+  .bts-container.expanded .bts-collapse-btn { 
+    display: flex; 
+    animation: fadeIn 1s ease forwards;
   }
 
-  .process-title { 
-    position: relative;
-    z-index: 1;
-    font-family:'Unbounded',sans-serif; 
-    font-size: 1.1rem; 
-    font-weight:700; 
-    letter-spacing:-.02em; 
-    margin-bottom:.75rem; 
-    color: #fff;
-  }
-  .process-desc { 
-    position: relative;
-    z-index: 1;
-    font-size:.9rem; 
-    color:var(--muted); 
-    font-weight:400; 
-    line-height:1.75; 
-  }
-
-  footer { position:relative; z-index:1; background:var(--bg2); border-top:1px solid rgba(255,255,255,.04); padding:3.5rem 4rem; display:flex; align-items:center; justify-content:space-between; box-shadow: 0 -10px 30px rgba(0,0,0,0.2); }
+  footer { position:relative; z-index:1; background:var(--bg); border-top:1px solid rgba(255,255,255,.04); padding:3.5rem 4rem; display:flex; align-items:center; justify-content:space-between; box-shadow: 0 -10px 30px rgba(0,0,0,0.2); }
   .footer-left { display:flex; flex-direction:column; gap:.5rem; }
   .footer-name { font-family:'Unbounded',sans-serif; font-size:1.1rem; font-weight:700; letter-spacing:-.02em; color: var(--text); }
   .footer-sub { font-size:.85rem; color:var(--muted); }
@@ -242,9 +255,7 @@
   .modal-box { position:relative; max-width:900px; width:90%; border-radius:20px; overflow:hidden; border:1px solid rgba(124,111,255,.3); box-shadow:0 30px 100px rgba(0,0,0,.8), 0 0 60px rgba(124,111,255,0.15); transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); background: var(--bg2); }
   .modal-overlay.open .modal-box { transform: scale(1); }
   .modal-box img { width:100%; display:block; border-radius: 20px; }
-  
   .modal-box iframe { width: 100%; aspect-ratio: 16/9; display: block; border-radius: 20px; border: none; }
-
   .modal-close { position:absolute; top:1.25rem; right:1.25rem; background:rgba(0,0,0,.5); backdrop-filter: blur(5px); border:1px solid rgba(255,255,255,.2); color:#fff; width:40px; height:40px; border-radius:50%; font-size:1.1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition: all 0.2s; z-index: 10; }
   .modal-close:hover { background:rgba(255,255,255,.2); transform: scale(1.1); }
 
@@ -294,6 +305,7 @@
     <li><a href="#work">Work</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#process">Process</a></li>
+    <li><a href="#bts">BTS</a></li>
   </ul>
 </nav>
 
@@ -320,7 +332,7 @@
   </div>
   <div class="stat-sep"></div>
   <div class="stat">
-    <div class="stat-n">Blender <em>&amp;</em> DaVinci Resolve</div>
+    <div class="stat-n">Blender <em>&amp;</em> Resolve</div>
     <div class="stat-l">Primary Tools</div>
   </div>
   <div class="stat-sep"></div>
@@ -338,19 +350,12 @@
   </div>
 
   <div class="work-grid">
-    
     <div class="work-card third reveal">
       <div class="card-thumb thumb-16-9 c-violet">
-        <iframe 
-          src="https://www.youtube.com/embed/m0Na6DiH8yU" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
+        <iframe src="https://www.youtube.com/embed/m0Na6DiH8yU" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="card-body">
-        <div class="card-meta">
-          <span class="card-tag">3D Animation</span>
-        </div>
+        <div class="card-meta"><span class="card-tag">3D Animation</span></div>
         <div class="card-title">Final 3D Animation</div>
       </div>
     </div>
@@ -361,9 +366,7 @@
         <img class="perfect-thumb" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Thumbnail">
       </div>
       <div class="card-body">
-        <div class="card-meta">
-          <span class="card-tag pink">2D Through 3D</span>
-        </div>
+        <div class="card-meta"><span class="card-tag pink">2D Through 3D</span></div>
         <div class="card-title">3D Animation Design with 2D Product</div>
       </div>
     </div>
@@ -374,13 +377,10 @@
         <img class="perfect-thumb" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="Thumbnail">
       </div>
       <div class="card-body">
-        <div class="card-meta">
-          <span class="card-tag teal">2D Animation</span>
-        </div>
+        <div class="card-meta"><span class="card-tag teal">2D Animation</span></div>
         <div class="card-title">2D Animation Made 2D</div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -443,6 +443,42 @@
   </div>
 </section>
 
+<section id="bts">
+  <div class="reveal" style="max-width:600px; margin-bottom: 1rem;">
+    <h2 class="s-title">Behind The Scenes</h2>
+  </div>
+  
+  <div class="bts-container reveal" id="bts-container" style="transition-delay: .1s">
+    <div class="bts-wrapper" id="bts-wrapper">
+      <div class="bts-grid">
+        <img src="1.png" alt="BTS Code Snippet">
+        <img src="2.png" alt="BTS Blender Couch">
+        <img src="3.png" alt="BTS Blender Rigging">
+        <img src="4.png" alt="BTS DaVinci Resolve Nodes 1">
+        <img src="5.png" alt="BTS DaVinci Resolve Nodes 2">
+        <img src="6.png" alt="BTS DaVinci Resolve Timeline">
+        <img src="7.png" alt="BTS DaVinci Resolve Nodes 3">
+        <img src="8.png" alt="BTS Blender Boat 1">
+        <img src="9.png" alt="BTS Blender Boat 2">
+        <img src="10.png" alt="BTS Blender Room">
+        
+        <img src="11.png" alt="BTS DaVinci Resolve Buildings">
+        <img src="12.jpg" alt="BTS Blender Character Rig">
+        <img src="13.jpg" alt="BTS Blender Couch Lighting">
+        <img src="14.png" alt="BTS JavaScript Code">
+      </div>
+    </div>
+    
+    <div class="bts-overlay">
+      <button class="btn-primary" onclick="document.getElementById('bts-container').classList.add('expanded')">See More</button>
+    </div>
+    
+    <div class="bts-collapse-btn">
+      <button class="btn-ghost" onclick="document.getElementById('bts-container').classList.remove('expanded'); document.getElementById('bts').scrollIntoView({behavior: 'smooth'})">See Less</button>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-left">
     <div class="footer-name">Ilan</div>
@@ -452,6 +488,7 @@
     <a href="#work" class="footer-link">Work</a>
     <a href="#about" class="footer-link">About</a>
     <a href="#process" class="footer-link">Process</a>
+    <a href="#bts" class="footer-link">BTS</a>
   </div>
 </footer>
 
