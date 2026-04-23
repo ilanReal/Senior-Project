@@ -85,51 +85,14 @@
   
   .work-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; align-items: start; }
 
-  .work-card { position: relative; overflow: hidden; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); background: var(--bg3); cursor: pointer; transition: all .4s cubic-bezier(.22,1,.36,1); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-  .work-card:hover { transform: translateY(-8px) scale(1.01); border-color: rgba(124,111,255,.4); box-shadow: 0 25px 60px rgba(0,0,0,.6), 0 0 50px rgba(124,111,255,.15); }
+  .work-card { position: relative; overflow: hidden; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); background: var(--bg3); transition: all .4s cubic-bezier(.22,1,.36,1); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+  .work-card:hover { transform: translateY(-8px); border-color: rgba(124,111,255,.4); box-shadow: 0 25px 60px rgba(0,0,0,.6), 0 0 50px rgba(124,111,255,.15); }
 
   .work-card.third { grid-column: span 4; }
 
   .card-thumb { width: 100%; background: var(--bg2); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; border-bottom: 1px solid rgba(255,255,255,0.03); }
   .thumb-16-9 { aspect-ratio: 16 / 9; }
   .card-thumb iframe { position:absolute; inset:0; width:100%; height:100%; border:0; z-index:2; }
-  
-  .card-thumb img.perfect-thumb {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 2;
-    transition: transform .5s cubic-bezier(.22,1,.36,1);
-    opacity: 0.85;
-  }
-  .work-card:hover .card-thumb img.perfect-thumb {
-    transform: scale(1.06);
-    opacity: 1;
-  }
-  .play-overlay {
-    position: absolute;
-    z-index: 3;
-    width: 50px;
-    height: 50px;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all .3s;
-    color: #fff;
-    font-size: 1.2rem;
-    padding-left: 4px;
-  }
-  .work-card:hover .play-overlay {
-    background: var(--accent);
-    transform: scale(1.1);
-    border-color: transparent;
-  }
 
   .c-violet { background: linear-gradient(135deg, #1a1040 0%, #2d1b7a 50%, #1a0f35 100%); }
   .c-rose   { background: linear-gradient(135deg, #1f0d18 0%, #5c1a3a 50%, #1a0d0d 100%); }
@@ -185,7 +148,6 @@
     transition: max-height 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); 
   }
   
-  /* IMPORTANT FIX: Set to 20000px so up to 50 images can fit on mobile devices */
   .bts-container.expanded .bts-wrapper { 
     max-height: 20000px; 
   }
@@ -247,17 +209,7 @@
   @keyframes up { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
   .reveal { opacity:0; transform:translateY(35px); transition: opacity .8s cubic-bezier(0.2, 0.8, 0.2, 1), transform .8s cubic-bezier(0.2, 0.8, 0.2, 1); }
   .reveal.visible { opacity:1; transform:translateY(0); }
-
-  .modal-overlay { display:none; position:fixed; inset:0; z-index:999; align-items:center; justify-content:center; backdrop-filter:blur(15px); background:rgba(7,7,15,.9); }
-  .modal-overlay.open { display:flex; animation: fadeIn 0.3s ease; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  
-  .modal-box { position:relative; max-width:900px; width:90%; border-radius:20px; overflow:hidden; border:1px solid rgba(124,111,255,.3); box-shadow:0 30px 100px rgba(0,0,0,.8), 0 0 60px rgba(124,111,255,0.15); transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); background: var(--bg2); }
-  .modal-overlay.open .modal-box { transform: scale(1); }
-  .modal-box img { width:100%; display:block; border-radius: 20px; }
-  .modal-box iframe { width: 100%; aspect-ratio: 16/9; display: block; border-radius: 20px; border: none; }
-  .modal-close { position:absolute; top:1.25rem; right:1.25rem; background:rgba(0,0,0,.5); backdrop-filter: blur(5px); border:1px solid rgba(255,255,255,.2); color:#fff; width:40px; height:40px; border-radius:50%; font-size:1.1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition: all 0.2s; z-index: 10; }
-  .modal-close:hover { background:rgba(255,255,255,.2); transform: scale(1.1); }
 
   @media (max-width: 1100px) {
     .process-grid { grid-template-columns: 1fr 1fr; }
@@ -283,20 +235,6 @@
   <span class="o1"></span>
   <span class="o2"></span>
   <span class="o3"></span>
-</div>
-
-<div class="modal-overlay" id="modal-video-2" onclick="this.classList.remove('open'); document.getElementById('video-frame-2').src = document.getElementById('video-frame-2').src;">
-  <div class="modal-box" onclick="event.stopPropagation()">
-    <iframe id="video-frame-2" src="https://drive.google.com/file/d/1mGJPMxaYUKsuqGUdaaFD0ry-DSDfJGZH/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    <button class="modal-close" onclick="document.getElementById('modal-video-2').classList.remove('open'); document.getElementById('video-frame-2').src = document.getElementById('video-frame-2').src;">✕</button>
-  </div>
-</div>
-
-<div class="modal-overlay" id="modal-video-3" onclick="this.classList.remove('open'); document.getElementById('video-frame-3').src = document.getElementById('video-frame-3').src;">
-  <div class="modal-box" onclick="event.stopPropagation()">
-    <iframe id="video-frame-3" src="https://drive.google.com/file/d/1dYn8aCpH8HQbsZiy4xWNGuyfmFBTbeKp/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    <button class="modal-close" onclick="document.getElementById('modal-video-3').classList.remove('open'); document.getElementById('video-frame-3').src = document.getElementById('video-frame-3').src;">✕</button>
-  </div>
 </div>
 
 <nav>
@@ -360,10 +298,9 @@
       </div>
     </div>
 
-    <div class="work-card third reveal" style="transition-delay:.1s;" onclick="document.getElementById('modal-video-2').classList.add('open')">
+    <div class="work-card third reveal" style="transition-delay:.1s;">
       <div class="card-thumb thumb-16-9 c-rose">
-        <div class="play-overlay">▶</div>
-        <img class="perfect-thumb" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Thumbnail">
+        <iframe src="https://drive.google.com/file/d/1mGJPMxaYUKsuqGUdaaFD0ry-DSDfJGZH/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
       <div class="card-body">
         <div class="card-meta"><span class="card-tag pink">2D Through 3D</span></div>
@@ -371,10 +308,9 @@
       </div>
     </div>
 
-    <div class="work-card third reveal" style="transition-delay:.2s" onclick="document.getElementById('modal-video-3').classList.add('open')">
+    <div class="work-card third reveal" style="transition-delay:.2s">
       <div class="card-thumb thumb-16-9 c-teal">
-        <div class="play-overlay">▶</div>
-        <img class="perfect-thumb" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="Thumbnail">
+        <iframe src="https://drive.google.com/file/d/1dYn8aCpH8HQbsZiy4xWNGuyfmFBTbeKp/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
       <div class="card-body">
         <div class="card-meta"><span class="card-tag teal">2D Animation</span></div>
@@ -462,8 +398,8 @@
         <img src="9.png" alt="BTS Image 9">
         <img src="10.png" alt="BTS Image 10">
         <img src="11.png" alt="BTS Image 11">
-        <img src="12.png" alt="BTS Image 12">
-        <img src="13.png" alt="BTS Image 13">
+        <img src="12.jpg" alt="BTS Image 12">
+        <img src="13.jpg" alt="BTS Image 13">
         <img src="14.png" alt="BTS Image 14">
         <img src="15.png" alt="BTS Image 15">
         <img src="16.png" alt="BTS Image 16">
